@@ -1,6 +1,6 @@
 # AETOS: Software for the optimization of algebraic expression trees
 
-AETOS (Algebraic Expression Tree Optimizing Software) is a script for the Wolfram Mathematica<sup>:registered:</sup> application that reduces a long algebraic expression to a smaller one. It achieves this using common expression elimination, constant folding, and global value numbering and is based on the internal Wolfram Mathematica<sup>:registered:</sup> compiler. A tenfold or more reduction in expression size is typical. The software provides very compact expressions that are easy to reason about, prepare for publication and potentially transform into other desired forms like computer programs in lower-level languages.
+AETOS (Algebraic Expression Tree Optimizing Software) is a script for the Wolfram Mathematica<sup>:registered:</sup> application that reduces a long algebraic expression to a smaller one. It achieves this using common expression elimination, constant folding, and global value numbering and is based on the internal Wolfram Mathematica<sup>:registered:</sup> compiler. A tenfold or more reduction in expression size is typical. The software provides very compact expressions that are easy to reason about, prepare for publication and potentially transform into other desired forms like computer programs for lower-level languages.
 
 Mathematica is a registered trademark of Wolfram Research Inc.
 
