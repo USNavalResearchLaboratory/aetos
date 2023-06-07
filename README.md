@@ -32,7 +32,7 @@ The file `example.nb` provides an example of use for a non-trivial expression ba
 </p>
 </div>
 
-Subsequently AETOS' `Compact` function is used to generate a much smaller expression with replacement rules:
+Subsequently AETOS' `Compact` function is used to generate a much shorter expression with replacement rules:
 
 <div align="center">
 <p align="center">
