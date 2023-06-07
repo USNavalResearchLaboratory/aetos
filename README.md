@@ -24,7 +24,7 @@ B. To display a help message, evaluate the following:
 ```
 
 ## Example
-The file `example.nb` provides an example of use for a non-trivial expression based on a Biot-Savart kernel [1]  typically used in N-body simulations. The examples script first derives the Jacobian matrix of the kernel and simplifies it. By default a large expression is generated:
+The file `example.nb` provides an example of use for a non-trivial expression based on a Biot-Savart kernel [1]  typically used in N-body simulations. The example script first derives the Jacobian matrix of the kernel and simplifies it. By default a long expression is generated:
 
 <div align="center">
 <p align="center">
