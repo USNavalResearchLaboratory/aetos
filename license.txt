@@ -1,15 +1,15 @@
-AETOS (Algebraic Expression Tree Optimizing Software): Software for the optimization of algebraic expression trees.
+AETOS (Algebraic Expression Tree Optimizing Software): Software for the optimization of algebraic
+expression trees.
 
 AUTHORIZATION TO USE AND DISTRIBUTE. By using or distributing the AETOS software
 ("THE SOFTWARE"), you agree to the following terms governing the use and redistribution of
 THE SOFTWARE originally developed at the U.S. Naval Research Laboratory ("NRL"), Computational
 Multiphysics Systems Lab., Code 6394.
 
-The modules of CXXPLOT containing an attribution in their header files to the NRL have been
-authored by federal employees. To the extent that a federal employee is an author of a portion of
-this software or a derivative work thereof, no copyright is claimed by the United States
-Government, as represented by the Secretary of the Navy ("GOVERNMENT") under Title 17, U.S. Code.
-All Other Rights Reserved.
+The modules of AETOS have been authored by federal employees. To the extent that a federal employee 
+is an author of a portion of this software or a derivative work thereof, no copyright is claimed by the 
+United States Government, as represented by the Secretary of the Navy ("GOVERNMENT") under Title 17, U.S. 
+Code. All Other Rights Reserved.
 
 Download, redistribution and use of source and/or binary forms, with or without modification,
 constitute an acknowledgement and agreement to the following:
