@@ -1,0 +1,1721 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     81536,       1713]
+NotebookOptionsPosition[     79641,       1670]
+NotebookOutlinePosition[     80053,       1686]
+CellTagsIndexPosition[     80010,       1683]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Install", "Subsection",
+ CellChangeTimes->{{3.8026096562027483`*^9, 3.802609657610282*^9}, {
+  3.8026134000958815`*^9, 
+  3.8026134010220027`*^9}},ExpressionUUID->"a3fd01e6-3fb2-4b12-8573-\
+32012a8e9220"],
+
+Cell[TextData[{
+ "For a basic installation, evaluate the present notebook by selecting \
+\[OpenCurlyDoubleQuote]Evaluation->Evaluate Notebook\[CloseCurlyDoubleQuote]. \
+No other step is generally necessary.\n\nIf you wish, modify the options as \
+described below.\n\n",
+ StyleBox["InstallCompactor",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ "[ ",
+ StyleBox["overwrite",
+  FontSlant->"Italic"],
+ "->[",
+ StyleBox["True",
+  FontSlant->"Italic"],
+ " or ",
+ StyleBox["False",
+  FontSlant->"Italic"],
+ "], ",
+ StyleBox["currentUserOnly",
+  FontSlant->"Italic"],
+ "->[",
+ StyleBox["True",
+  FontSlant->"Italic"],
+ " or ",
+ StyleBox["False",
+  FontSlant->"Italic"],
+ "]]\nIf ",
+ StyleBox["overwrite",
+  FontSlant->"Italic"],
+ " is ",
+ StyleBox["True",
+  FontSlant->"Italic"],
+ ", the installer will overwrite a previous installation.\n If ",
+ StyleBox["currentUserOnly",
+  FontSlant->"Italic"],
+ " is ",
+ StyleBox["True",
+  FontSlant->"Italic"],
+ ", the ",
+ StyleBox["Compactor",
+  FontSlant->"Italic"],
+ " will be installed at a location accessible only by the current user."
+}], "Text",
+ CellChangeTimes->{{3.80260975528051*^9, 3.8026097690976124`*^9}, {
+  3.8026135128877144`*^9, 3.8026135637160735`*^9}, {3.8026140899169517`*^9, 
+  3.802614099920923*^9}, {3.802616487558756*^9, 3.802616513383705*^9}, {
+  3.802623362345696*^9, 3.8026233627630663`*^9}, {3.802688056911435*^9, 
+  3.8026880665105963`*^9}, {3.8026958137019873`*^9, 
+  3.8026958207155614`*^9}},ExpressionUUID->"aa884a00-d479-4a12-8730-\
+c92cfc23364b"],
+
+Cell[CellGroupData[{
+
+Cell["Installer initialization", "Subsubsection",
+ CellChangeTimes->{{3.802609717201017*^9, 
+  3.802609725385491*^9}},ExpressionUUID->"82c7b686-6704-4612-8076-\
+83a46e95e346"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Options", "[", "InstallCompactor", "]"}], "=", "\n", 
+    RowBox[{"{", "\n", 
+     RowBox[{
+      RowBox[{"overwrite", "\[Rule]", "True"}], ",", "\n", 
+      RowBox[{"currentUserOnly", "\[Rule]", "False"}]}], "\n", "}"}]}], ";"}],
+   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"InstallCompactor", "[", 
+    RowBox[{"OptionsPattern", "[", "]"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+      "selectedDestination", ",", "systemWideName", ",", "userOnlyName"}], 
+      "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"systemWideName", "=", 
+       RowBox[{"FileNameJoin", "[", 
+        RowBox[{"{", 
+         RowBox[{
+         "$BaseDirectory", ",", "\"\<Applications\>\"", ",", 
+          "\"\<Compactor.wl\>\""}], "}"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"userOnlyName", "=", 
+       RowBox[{"FileNameJoin", "[", 
+        RowBox[{"{", 
+         RowBox[{
+         "$UserBaseDirectory", ",", "\"\<Applications\>\"", ",", 
+          "\"\<Compactor.wl\>\""}], "}"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"selectedDestination", "=", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"OptionValue", "[", "currentUserOnly", "]"}], ",", 
+         "userOnlyName", ",", "systemWideName"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"installed", "=", 
+       RowBox[{"CopyFile", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"FileNameJoin", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"NotebookDirectory", "[", "]"}], ",", 
+            "\"\<Compactor.wl\>\""}], "}"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"FileNameJoin", "[", "selectedDestination", "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"OverwriteTarget", "\[Rule]", 
+          RowBox[{"OptionValue", "[", "overwrite", "]"}]}]}], 
+        "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"FailureQ", "[", "installed", "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"!", 
+             RowBox[{"FileExistsQ", "[", "selectedDestination", "]"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"(", "\[IndentingNewLine]", " ", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"InstallCompactor", "::", "unknownError"}], "=", 
+               "\"\<Unknown error\>\""}], ";", "\[IndentingNewLine]", 
+              RowBox[{"Message", "[", 
+               RowBox[{"InstallCompactor", "::", "unknownError"}], "]"}], 
+              ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", ")"}], ",",
+             "\[IndentingNewLine]", 
+            RowBox[{"(", "\[IndentingNewLine]", " ", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"InstallCompactor", "::", "overwriteOption"}], "=", 
+               "\"\<Compactor.wl already exsists If you wish, set \
+overwrite->True to overwrite the previous installation.\>\""}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"Message", "[", " ", 
+               RowBox[{"InstallCompactor", "::", "overwriteOption"}], "]"}]}],
+              "\[IndentingNewLine]", ")"}]}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Return", "[", "]"}], ";"}], "\[IndentingNewLine]", ")"}]}],
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<Installed in: \>\"", ",", " ", "installed"}], "]"}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"FileExistsQ", "[", "systemWideName", "]"}], " ", "&&", " ", 
+         RowBox[{"FileExistsQ", "[", "userOnlyName", "]"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"InstallCompactor", "::", "multipleInstances"}], "=", 
+          RowBox[{
+          "\"\<The package exists both in the local user and system wide, \
+consider removing one of the two:\\n\>\"", "<>", "systemWideName", " ", "<>", 
+           "\"\<\\n\>\"", "<>", "userOnlyName"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Message", "[", 
+          RowBox[{"InstallCompactor", "::", "multipleInstances"}], "]"}]}]}], 
+       "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  "\"\<Usage:\\nInstallCompactor[ overwrite->[True or False], \
+CurrentUserOnly->[True or False]]\\nIf overwrite is true, the installer will \
+overwrite a previous installation.\\n If currentUserOnly is True, the \
+Compactor will be usable only by the current user.\>\"", "]"}]}], "Input",
+ CellChangeTimes->{{3.802607523155898*^9, 3.8026075716243258`*^9}, {
+   3.8026076372848673`*^9, 3.8026076613898907`*^9}, {3.8026076921874404`*^9, 
+   3.8026076982505007`*^9}, {3.802607761815772*^9, 3.8026077759600773`*^9}, {
+   3.802607817425704*^9, 3.802607839957671*^9}, 3.802607898961469*^9, {
+   3.8026079496309075`*^9, 3.80260797379181*^9}, {3.8026080301190705`*^9, 
+   3.802608109911619*^9}, {3.8026081935902843`*^9, 3.80260821632833*^9}, {
+   3.802608401863632*^9, 3.802608672340349*^9}, {3.8026087146326094`*^9, 
+   3.802608716664219*^9}, {3.8026088720250196`*^9, 3.8026089228406467`*^9}, {
+   3.8026089589523067`*^9, 3.8026089598964024`*^9}, {3.8026089905680246`*^9, 
+   3.8026092362580557`*^9}, {3.8026092669846706`*^9, 3.802609335757372*^9}, {
+   3.802613608124955*^9, 3.8026136287819996`*^9}, {3.8026136598546886`*^9, 
+   3.802613673551858*^9}},
+ CellLabel->
+  "In[174]:=",ExpressionUUID->"2ac7899f-0830-490b-8134-3a74dc1665b3"],
+
+Cell[BoxData["\<\"Usage:\\nInstallCompactor[ overwrite->[True or False], \
+CurrentUserOnly->[True or False]]\\nIf overwrite is true, the installer will \
+overwrite a previous installation.\\n If currentUserOnly is True, the \
+Compactor will be usable only by the current user.\"\>"], "Print",
+ CellChangeTimes->{
+  3.802609237105491*^9, 3.8026092715954137`*^9, {3.8026093383277297`*^9, 
+   3.8026093451483045`*^9}, {3.8026094149114647`*^9, 
+   3.8026094261415253`*^9}, {3.8026094985957775`*^9, 3.8026095221944933`*^9}, 
+   3.80260969000657*^9, 3.8026102404963484`*^9, {3.8026104191018534`*^9, 
+   3.8026104636304793`*^9}, 3.8026132303581395`*^9, 3.8026133150087447`*^9, {
+   3.802613577975277*^9, 3.802613586881811*^9}, 3.8026136357916183`*^9, 
+   3.802613680939582*^9, {3.802614020249775*^9, 3.8026140500123277`*^9}, {
+   3.802616921514845*^9, 3.8026169280759764`*^9}, 3.8026233668158875`*^9, 
+   3.8026234047069206`*^9, 3.8026881028173485`*^9, 3.802688293703489*^9, 
+   3.802689079013965*^9, 3.8026891891281223`*^9, 3.8026896193170557`*^9, 
+   3.8026899746665707`*^9, 3.8026902973537607`*^9, 3.8026903584808254`*^9, 
+   3.802690464975551*^9, 3.802691223065499*^9, 3.8026966994364758`*^9, 
+   3.8027119521925597`*^9, 3.802712050592877*^9, 3.802712245751351*^9, 
+   3.8030381709890785`*^9, 3.8032993552590666`*^9, 3.803299401768523*^9, 
+   3.8032994469535522`*^9, 3.8032995489328737`*^9, 3.8032996939349127`*^9, 
+   3.8032997369369125`*^9, 3.8032999342808247`*^9, 3.803299967094857*^9, {
+   3.8032999988270073`*^9, 3.8033000064556684`*^9}, 3.8033046331059766`*^9, 
+   3.80330651047322*^9, 3.803306594133356*^9, {3.80330663536316*^9, 
+   3.803306664031619*^9}, 3.8033067207047844`*^9, 3.8033074708099546`*^9, 
+   3.8033075432991915`*^9, 3.8033193708055153`*^9, 3.803319942729198*^9, 
+   3.8033201662275763`*^9, 3.803322267017167*^9, 3.803322650968321*^9},
+ CellLabel->
+  "During evaluation of \
+In[174]:=",ExpressionUUID->"4f49bc9b-9272-4614-9bcb-67043a5e1bf5"]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Installation", "Subsubsection",
+ CellChangeTimes->{{3.8026097340108395`*^9, 
+  3.802609735522411*^9}},ExpressionUUID->"53db9d5f-43d6-4c2b-bc70-\
+97d7d7456d9e"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"InstallCompactor", "[", 
+  RowBox[{
+   RowBox[{"overwrite", "\[Rule]", "True"}], ",", 
+   RowBox[{"currentUserOnly", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.8026070270067043`*^9, 3.802607065108902*^9}, {
+  3.8026071202849045`*^9, 3.802607189086456*^9}, {3.8026072564032283`*^9, 
+  3.802607291445345*^9}, {3.8026073560986443`*^9, 3.8026074800108676`*^9}, {
+  3.802607578070445*^9, 3.8026075895010085`*^9}, {3.8026081161968985`*^9, 
+  3.8026081178157606`*^9}, {3.8026086879526663`*^9, 3.802608693827009*^9}, {
+  3.802608931087574*^9, 3.802608932184106*^9}, {3.802609244502288*^9, 
+  3.802609244909178*^9}, {3.8026093535607452`*^9, 3.802609367944919*^9}, {
+  3.802613582176423*^9, 3.8026135829925385`*^9}, {3.8026169244282317`*^9, 
+  3.8026169251659513`*^9}, {3.8026958414087667`*^9, 3.802695842078353*^9}, {
+  3.8032993975181756`*^9, 3.8032993980187063`*^9}},
+ CellLabel->
+  "In[177]:=",ExpressionUUID->"49861549-10f3-4d18-b09d-e990c1d8a916"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Installed in: \"\>", 
+   "\[InvisibleSpace]", \
+"\<\"C:\\\\Users\\\\nasos\\\\AppData\\\\Roaming\\\\Mathematica\\\\\
+Applications\\\\Compactor.wl\"\>"}],
+  SequenceForm[
+  "Installed in: ", 
+   "C:\\Users\\nasos\\AppData\\Roaming\\Mathematica\\Applications\\Compactor.\
+wl"],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8032994020602584`*^9, 3.8032994471787057`*^9, 3.803299549164812*^9, 
+   3.8032996941856766`*^9, 3.80329973731157*^9, 3.803299934539141*^9, 
+   3.803299967292944*^9, {3.803299999176856*^9, 3.8033000066467466`*^9}, 
+   3.8033046333955784`*^9, 3.803306510771942*^9, 3.8033065946824574`*^9, {
+   3.8033066358683114`*^9, 3.8033066643338833`*^9}, 3.8033067210933194`*^9, 
+   3.8033068633034906`*^9, 3.8033074711870775`*^9, 3.803307543755159*^9, 
+   3.803319375453675*^9, 3.803319947286359*^9, 3.8033201710371*^9, 
+   3.80332226755394*^9, 3.803322651510273*^9},
+ CellLabel->
+  "During evaluation of \
+In[177]:=",ExpressionUUID->"323522e2-ba84-44d1-b4f5-21891708e820"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Test", "Subsection",
+ CellChangeTimes->{{3.802609668425103*^9, 3.8026096690812445`*^9}, {
+  3.802613402180518*^9, 
+  3.8026134025324297`*^9}},ExpressionUUID->"53c3b9a5-de5f-4762-b37d-\
+cf1bc32acf07"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Quit", ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"<<", "Compactor`"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"Loads", " ", "the", " ", "package"}], "*)"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"?", "Compact"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"Prints", " ", "a", " ", "help", " ", "message"}], 
+   "*)"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.802609473959539*^9, 3.8026094829800415`*^9}, {
+  3.802614038075172*^9, 3.8026140411603813`*^9}},
+ CellLabel->
+  "In[178]:=",ExpressionUUID->"1adff933-f008-4e03-ab5b-f5db8cb33d3c"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[
+   FrameBox[
+    DynamicModuleBox[{System`InformationDump`open$$ = False, 
+     System`InformationDump`mouseOver$$ = False}, 
+     PaneSelectorBox[{True->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False,
+             BaseStyle -> None],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"Compact[\\!\\(\\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\
+\\),...] \\ngenerates a compact form of \\!\\(\\*StyleBox[\\\"expr\\\", \
+\\\"TI\\\"]\\) by minimizing the number of leaf nodes of the expr syntax tree \
+and providing relevant replacement rules. \
+\\n\\!\\(\\*StyleBox[\\\"Options\\\", \\\"SubSection\\\"]\\)\\nThe option \\!\
+\\(\\*StyleBox[\\\"EliminateNumericRules\\\", \\\"TI\\\"]\\) eliminates rules \
+that contain only numbers. Defaults to True. \\nThe option \\!\\(\\*StyleBox[\
+\\\"EliminateIntermediateRules\\\", \\\"TI\\\"]\\) eliminates rules that \
+appear only in the replacements. Defaults to False. \\nThe option \
+\\!\\(\\*StyleBox[\\\"EliminateNegationReplacements\\\", \\\"TI\\\"]\\) \
+converts subexpressions of the form \\!\\(\\*StyleBox[\\\"-1+x\\\", \
+\\\"TI\\\"]\\) to \\!\\(\\*StyleBox[\\\"x-1\\\", \\\"TI\\\"]\\). Defaults to \
+True. \\nThe option \\!\\(\\*StyleBox[\\\"ReplacementSymbols\\\", \\\"TI\\\"]\
+\\) contains an ordered list of replacement symbols. Defaults to Greek and \
+Caligraphic uppercase letters.\"\>", "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          PaneBox[GridBox[{
+             {
+              
+              DynamicModuleBox[{System`InformationDump`open$$ = {
+               False, False, False, False, False, False, False, False, False, 
+                False, False, False}}, 
+               StyleBox[GridBox[{
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Definitions\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"Definitions\"",
+                    TooltipStyle->"TextStyling"],
+                    Annotation[#, "Definitions", "Tooltip"]& ], GridBox[{
+                    {
+                    RowBox[{
+                    RowBox[{"Compact", "[", 
+                    RowBox[{"Compactor`Private`expr_", ",", 
+                    RowBox[{"OptionsPattern", "[", "]"}]}], "]"}], ":=", 
+                    RowBox[{"Module", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    "Compactor`Private`subscriptSymbols", ",", 
+                    "Compactor`Private`otherSymbols", ",", 
+                    "Compactor`Private`exprNoSubscriptSymbols", ",", 
+                    "Compactor`Private`subscriptReplacements", ",", 
+                    "Compactor`Private`DummySymbol2d042193", ",", 
+                    "Compactor`Private`variables", ",", 
+                    "Compactor`Private`func", ",", 
+                    "Compactor`Private`recoverReplacements", ",", 
+                    "Compactor`Private`compacted", ",", 
+                    "Compactor`Private`compacted2", ",", 
+                    "Compactor`Private`compacted3", ",", 
+                    "Compactor`Private`compacted4", ",", 
+                    "Compactor`Private`compacted5", ",", 
+                    "Compactor`Private`rep", ",", 
+                    "Compactor`Private`unnecessary", ",", 
+                    "Compactor`Private`symbolReplacements", ",", 
+                    "Compactor`Private`length4", ",", 
+                    "Compactor`Private`keep", ",", 
+                    "Compactor`Private`keepIds", ",", 
+                    "Compactor`Private`keepIds2", ",", 
+                    "Compactor`Private`rules", ",", 
+                    "Compactor`Private`lengthK", ",", 
+                    "Compactor`Private`dropIds", ",", 
+                    "Compactor`Private`ppAAppAAbb", ",", 
+                    "Compactor`Private`notVariables", ",", 
+                    "Compactor`Private`repNotMembers", ",", 
+                    "Compactor`Private`compacted2a", ",", 
+                    "Compactor`Private`final", ",", "Compactor`Private`iind", 
+                    ",", "Compactor`Private`negationReplacements", ",", 
+                    "Compactor`Private`negations1", ",", 
+                    "Compactor`Private`negations", ",", 
+                    "Compactor`Private`cc1", ",", "Compactor`Private`cc2", 
+                    ",", "Compactor`Private`numericRepRules", ",", 
+                    "Compactor`Private`compacted3a", ",", 
+                    "Compactor`Private`compacted3b", ",", 
+                    "Compactor`Private`numericIDs", ",", 
+                    "Compactor`Private`lowLeafCountIDs", ",", 
+                    "Compactor`Private`lowLeafCountRep"}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"Compactor`Private`subscriptSymbols", "=", 
+                    RowBox[{"Union", "[", 
+                    RowBox[{"Cases", "[", 
+                    RowBox[{"Compactor`Private`expr", ",", 
+                    SubscriptBox["_Symbol", "_"], ",", "\[Infinity]"}], "]"}],
+                     "]"}]}], ";", 
+                    RowBox[{"Compactor`Private`subscriptReplacements", "=", 
+                    RowBox[{"MapThread", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"#1", "\[Rule]", "#2"}], "&"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"Compactor`Private`subscriptSymbols", ",", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    "Compactor`Private`DummySymbol2d042193", "[", "#1", "]"}],
+                     "&"}], ")"}], "/@", 
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"Position", "[", 
+                    RowBox[{"Compactor`Private`subscriptSymbols", ",", "#1"}],
+                     "]"}], "&"}], ")"}], "/@", 
+                    "Compactor`Private`subscriptSymbols"}], "]"}]}]}], 
+                    "}"}]}], "]"}]}], ";", 
+                    RowBox[{"Compactor`Private`exprNoSubscriptSymbols", "=", 
+                    RowBox[{
+                    "Compactor`Private`expr", "/.", "\[VeryThinSpace]", 
+                    "Compactor`Private`subscriptReplacements"}]}], ";", 
+                    RowBox[{"Compactor`Private`otherSymbols", "=", 
+                    RowBox[{"Union", "[", 
+                    RowBox[{"Cases", "[", 
+                    RowBox[{
+                    "Compactor`Private`exprNoSubscriptSymbols", ",", 
+                    "_Symbol", ",", "\[Infinity]"}], "]"}], "]"}]}], ";", 
+                    RowBox[{"Compactor`Private`variables", "=", 
+                    RowBox[{"Join", "[", 
+                    RowBox[{
+                    "Compactor`Private`otherSymbols", ",", 
+                    "Compactor`Private`subscriptSymbols"}], "]"}]}], ";", 
+                    RowBox[{"Compactor`Private`func", "=", 
+                    RowBox[{"First", "[", 
+                    RowBox[{"Cases", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"Compile", "[", 
+                    RowBox[{"##1", ",", 
+                    RowBox[{"CompilationOptions", "\[Rule]", 
+                    RowBox[{"{", 
+                    
+                    RowBox[{"\<\"ExpressionOptimization\"\>", "\[Rule]", 
+                    "True"}], "}"}]}]}], "]"}], "&"}], ")"}], "[", 
+                    RowBox[{
+                    "Compactor`Private`variables", ",", 
+                    "Compactor`Private`expr"}], "]"}], ",", 
+                    RowBox[{
+                    "Compactor`Private`x_Function", "\[RuleDelayed]", 
+                    "Compactor`Private`x"}]}], "]"}], "]"}]}], ";", 
+                    RowBox[{"Compactor`Private`recoverReplacements", "=", 
+                    RowBox[{"MapThread", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"#1", "\[Rule]", "#2"}], "&"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "Compactor`Private`func", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    "Compactor`Private`variables"}], "}"}]}], "]"}]}], ";", 
+                    RowBox[{"Compactor`Private`compacted", "=", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    "Compactor`Private`func", "/.", "\[VeryThinSpace]", 
+                    "#1"}], "/.", "\[VeryThinSpace]", 
+                    RowBox[{
+                    RowBox[{"HoldPattern", "[", 
+                    RowBox[{"Function", "[", 
+                    RowBox[{"_", ",", 
+                    RowBox[{"Block", "[", 
+                    RowBox[{"_", ",", "Compactor`Private`b_"}], "]"}]}], 
+                    "]"}], "]"}], "\[RuleDelayed]", 
+                    RowBox[{"Hold", "[", 
+                    RowBox[{"\[FormalM]", "[", 
+                    RowBox[{
+                    RowBox[{"{", "Compactor`Private`ppAAppAAbb", "}"}], ",", 
+                    "Compactor`Private`b"}], "]"}], "]"}]}]}], "/.", 
+                    "\[VeryThinSpace]", 
+                    RowBox[{"\[FormalM]", "\[Rule]", "Module"}]}], "&"}], 
+                    ")"}], "[", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"MapIndexed", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"#1", "\[Rule]", 
+                    RowBox[{"Compactor`Private`ppAAppAAbb", "@@", "#2"}]}], 
+                    "&"}], ",", "#1"}], "]"}], "&"}], ")"}], "[", 
+                    RowBox[{"DeleteDuplicates", "[", 
+                    RowBox[{"Cases", "[", 
+                    RowBox[{"Compactor`Private`func", ",", 
+                    RowBox[{"Compactor`Private`s_Symbol", "/;", 
+                    RowBox[{"\<\"Compile`\"\>", "===", 
+                    RowBox[{"Context", "[", "Compactor`Private`s", "]"}]}]}], 
+                    ",", "\[Infinity]"}], "]"}], "]"}], "]"}], "]"}]}], ";", 
+                    RowBox[{"Compactor`Private`rep", "=", 
+                    RowBox[{
+                    RowBox[{
+                    "Compactor`Private`compacted", "/.", "\[VeryThinSpace]", 
+                    RowBox[{
+                    RowBox[{"Hold", "[", 
+                    RowBox[{"Module", "[", 
+                    RowBox[{"_", ",", 
+                    RowBox[{
+                    "Compactor`Private`s___", ";", "Compactor`Private`f_"}]}],
+                     "]"}], "]"}], "\[RuleDelayed]", 
+                    RowBox[{"Hold", "[", 
+                    RowBox[{"Compactor`Private`f", "/.", "\[VeryThinSpace]", 
+                    RowBox[{"{", "Compactor`Private`s", "}"}]}], "]"}]}]}], "/.",
+                     "\[VeryThinSpace]", 
+                    RowBox[{"Set", "\[Rule]", "Rule"}]}]}], ";", 
+                    RowBox[{"Compactor`Private`unnecessary", "=", 
+                    RowBox[{
+                    RowBox[{"Cases", "[", 
+                    RowBox[{
+                    RowBox[{"Tally", "[", 
+                    RowBox[{"Cases", "[", 
+                    RowBox[{"Compactor`Private`rep", ",", 
+                    RowBox[{"Compactor`Private`ppAAppAAbb", "[", "_", "]"}], 
+                    ",", "\[Infinity]"}], "]"}], "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"_", ",", "2"}], "}"}]}], "]"}], 
+                    "\[LeftDoubleBracket]", 
+                    RowBox[{"All", ",", "1"}], "\[RightDoubleBracket]"}]}], 
+                    ";", 
+                    RowBox[{"Compactor`Private`compacted2", "=", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"DeleteCases", "[", 
+                    RowBox[{
+                    "Compactor`Private`rep", ",", "#1", ",", "\[Infinity]"}], 
+                    "]"}], "//.", "\[VeryThinSpace]", 
+                    RowBox[{"Cases", "[", 
+                    RowBox[{
+                    "Compactor`Private`rep", ",", "#1", ",", "\[Infinity]"}], 
+                    "]"}]}], "&"}], ")"}], "[", 
+                    RowBox[{
+                    RowBox[{"Verbatim", "[", "Rule", "]"}], "[", 
+                    RowBox[{
+                    RowBox[{
+                    "Alternatives", "@@", "Compactor`Private`unnecessary"}], 
+                    ",", "_"}], "]"}], "]"}]}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    "Length", "[", "Compactor`Private`compacted2", "]"}], 
+                    "\[Equal]", "2"}], ",", 
+                    RowBox[{
+                    RowBox[{
+                    StyleBox[
+                    RowBox[{
+                    "Compactor`Private`Compactor", "::", "noRefinement"}], 
+                    "MessageName"], 
+                    "=", "\<\"The compiler could not optimize the expression. \
+This may be because the expression cannot be further simplified. Consider \
+modifying the expression to guarantee Real domain assumptions hold.\"\>"}], 
+                    ";", 
+                    RowBox[{"Message", "[", 
+                    StyleBox[
+                    RowBox[{
+                    "Compactor`Private`Compactor", "::", "noRefinement"}], 
+                    "MessageName"], "]"}], ";", 
+                    RowBox[{"Return", "[", "]"}], ";"}]}], "]"}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    "OptionValue", "[", "EliminateIntermediateRules", "]"}], 
+                    ",", 
+                    RowBox[{
+                    RowBox[{"Compactor`Private`keep", "=", 
+                    RowBox[{"Union", "[", 
+                    RowBox[{"Cases", "[", 
+                    RowBox[{
+                    RowBox[{
+                    "Compactor`Private`compacted2", "\[LeftDoubleBracket]", 
+                    RowBox[{"1", ",", "1"}], "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{"Compactor`Private`ppAAppAAbb", "[", "_", "]"}], 
+                    ",", "\[Infinity]"}], "]"}], "]"}]}], ";", 
+                    RowBox[{"Compactor`Private`lengthK", "=", 
+                    RowBox[{
+                    "Compactor`Private`compacted2", "\[LeftDoubleBracket]", 
+                    RowBox[{"1", ",", "2", ",", "All", ",", "1"}], 
+                    "\[RightDoubleBracket]"}]}], ";", 
+                    RowBox[{"Compactor`Private`keepIds2", "=", 
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{"Select", "[", 
+                    RowBox[{
+                    RowBox[{"Table", "[", 
+                    RowBox[{
+                    RowBox[{"Position", "[", 
+                    RowBox[{"Compactor`Private`lengthK", ",", 
+                    RowBox[{
+                    "Compactor`Private`keep", "\[LeftDoubleBracket]", 
+                    "Compactor`Private`iind", "\[RightDoubleBracket]"}]}], 
+                    "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"Compactor`Private`iind", ",", "1", ",", 
+                    RowBox[{"Length", "[", "Compactor`Private`keep", "]"}]}], 
+                    "}"}]}], "]"}], ",", 
+                    RowBox[{
+                    RowBox[{"#1", "=!=", 
+                    RowBox[{"{", "}"}]}], "&"}]}], "]"}], "]"}]}], ";", 
+                    RowBox[{"Compactor`Private`notVariables", "=", 
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{"Position", "[", 
+                    RowBox[{
+                    RowBox[{"Table", "[", 
+                    RowBox[{
+                    RowBox[{"Length", "[", 
+                    RowBox[{"Variables", "[", 
+                    RowBox[{
+                    "Compactor`Private`compacted2", "\[LeftDoubleBracket]", 
+                    RowBox[{"1", ",", "2", ",", "Compactor`Private`iind", ",",
+                     "2"}], "\[RightDoubleBracket]"}], "]"}], "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"Compactor`Private`iind", ",", "1", ",", 
+                    RowBox[{"Length", "[", 
+                    RowBox[{
+                    "Compactor`Private`compacted2", "\[LeftDoubleBracket]", 
+                    RowBox[{"1", ",", "2"}], "\[RightDoubleBracket]"}], 
+                    "]"}]}], "}"}]}], "]"}], ",", 
+                    RowBox[{"_", "?", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"#1", "\[Equal]", "0"}], "&"}], ")"}]}]}], "]"}], 
+                    "]"}]}], ";", 
+                    RowBox[{"Compactor`Private`keepIds", "=", 
+                    RowBox[{"Complement", "[", 
+                    RowBox[{
+                    "Compactor`Private`keepIds2", ",", 
+                    "Compactor`Private`notVariables"}], "]"}]}], ";", 
+                    RowBox[{"Compactor`Private`repNotMembers", "=", 
+                    RowBox[{
+                    "Compactor`Private`keepIds2", "\[Intersection]", 
+                    "Compactor`Private`notVariables"}]}], ";", 
+                    RowBox[{"Compactor`Private`rules", "=", 
+                    RowBox[{
+                    "Compactor`Private`compacted2", "\[LeftDoubleBracket]", 
+                    RowBox[{"1", ",", "2"}], "\[RightDoubleBracket]"}]}], ";", 
+                    RowBox[{"Compactor`Private`compacted2a", "=", 
+                    RowBox[{"Evaluate", "[", 
+                    RowBox[{
+                    RowBox[{
+                    "Compactor`Private`compacted2", "\[LeftDoubleBracket]", 
+                    RowBox[{"1", ",", "1"}], "\[RightDoubleBracket]"}], "/.", 
+                    "\[VeryThinSpace]", 
+                    RowBox[{
+                    "Compactor`Private`rules", "\[LeftDoubleBracket]", 
+                    "Compactor`Private`repNotMembers", 
+                    "\[RightDoubleBracket]"}]}], "]"}]}], ";", 
+                    RowBox[{"Compactor`Private`dropIds", "=", 
+                    RowBox[{"Complement", "[", 
+                    RowBox[{
+                    RowBox[{"Table", "[", 
+                    RowBox[{"Compactor`Private`iind", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"Compactor`Private`iind", ",", "1", ",", 
+                    RowBox[{"Length", "[", "Compactor`Private`rules", "]"}]}],
+                     "}"}]}], "]"}], ",", "Compactor`Private`keepIds"}], 
+                    "]"}]}], ";", 
+                    RowBox[{"Do", "[", 
+                    RowBox[{
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"!", 
+                    RowBox[{"MemberQ", "[", 
+                    RowBox[{
+                    "Compactor`Private`keepIds", ",", 
+                    "Compactor`Private`iind"}], "]"}]}], ",", 
+                    RowBox[{"Compactor`Private`rules", "=", 
+                    RowBox[{"Evaluate", "[", 
+                    RowBox[{
+                    "Compactor`Private`rules", "/.", "\[VeryThinSpace]", 
+                    RowBox[{
+                    "Compactor`Private`rules", "\[LeftDoubleBracket]", 
+                    "Compactor`Private`iind", "\[RightDoubleBracket]"}]}], 
+                    "]"}]}]}], "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"Compactor`Private`iind", ",", "1", ",", 
+                    RowBox[{"Length", "[", "Compactor`Private`rules", "]"}]}],
+                     "}"}]}], "]"}], ";", 
+                    RowBox[{"Compactor`Private`compacted3", "=", 
+                    RowBox[{"{", 
+                    RowBox[{"Compactor`Private`compacted2a", ",", 
+                    RowBox[{
+                    "Compactor`Private`rules", "\[LeftDoubleBracket]", 
+                    "Compactor`Private`keepIds", "\[RightDoubleBracket]"}]}], 
+                    "}"}]}], ";"}], ",", 
+                    RowBox[{
+                    RowBox[{"Compactor`Private`compacted3", "=", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "Compactor`Private`compacted2", "\[LeftDoubleBracket]", 
+                    RowBox[{"1", ",", "1"}], "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{
+                    "Compactor`Private`compacted2", "\[LeftDoubleBracket]", 
+                    RowBox[{"1", ",", "2"}], "\[RightDoubleBracket]"}]}], 
+                    "}"}]}], ";"}]}], "]"}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    "OptionValue", "[", "EliminateNumericRules", "]"}], ",", 
+                    RowBox[{
+                    RowBox[{"Compactor`Private`numericIDs", "=", 
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{"Position", "[", 
+                    RowBox[{
+                    RowBox[{
+                    "Compactor`Private`compacted3", "\[LeftDoubleBracket]", 
+                    RowBox[{"2", ",", "All", ",", "2"}], 
+                    "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{"_", "?", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"NumericQ", "[", "#1", "]"}], "&"}], ")"}]}], ",",
+                     "1"}], "]"}], "]"}]}], ";", 
+                    RowBox[{"Compactor`Private`numericRepRules", "=", 
+                    RowBox[{
+                    "Compactor`Private`compacted3", "\[LeftDoubleBracket]", 
+                    RowBox[{"2", ",", "Compactor`Private`numericIDs"}], 
+                    "\[RightDoubleBracket]"}]}], ";", 
+                    RowBox[{"Compactor`Private`compacted3a", "=", 
+                    RowBox[{
+                    RowBox[{
+                    "Compactor`Private`compacted3", "\[LeftDoubleBracket]", 
+                    "1", "\[RightDoubleBracket]"}], "/.", "\[VeryThinSpace]", 
+                    "Compactor`Private`numericRepRules"}]}], ";", 
+                    RowBox[{"Compactor`Private`compacted3b", "=", 
+                    RowBox[{"Delete", "[", 
+                    RowBox[{
+                    RowBox[{
+                    "Compactor`Private`compacted3", "\[LeftDoubleBracket]", 
+                    "2", "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{"Transpose", "[", 
+                    RowBox[{"{", "Compactor`Private`numericIDs", "}"}], 
+                    "]"}]}], "]"}]}], ";", 
+                    RowBox[{"Compactor`Private`compacted3", "=", 
+                    RowBox[{"Simplify", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"Compactor`Private`compacted3a", ",", 
+                    RowBox[{
+                    "Compactor`Private`compacted3b", "/.", "\[VeryThinSpace]",
+                     "Compactor`Private`numericRepRules"}]}], "}"}], "]"}]}], 
+                    ";"}]}], "]"}], ";", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"Compactor`Private`lowLeafCountIDs", "=", 
+                    RowBox[{"Position", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"LeafCount", "[", 
+                    RowBox[{
+                    "#1", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}], "]"}], "&"}], ")"}], "/@", 
+                    RowBox[{
+                    "Compactor`Private`compacted3", "\[LeftDoubleBracket]", 
+                    "2", "\[RightDoubleBracket]"}]}], ",", 
+                    RowBox[{"_", "?", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"#1", "<", 
+                    RowBox[{"OptionValue", "[", "LeafCountThreshold", "]"}]}],
+                     "&"}], ")"}]}]}], "]"}]}], ";", 
+                    RowBox[{"Compactor`Private`lowLeafCountRep", "=", 
+                    RowBox[{
+                    "Compactor`Private`compacted3", "\[LeftDoubleBracket]", 
+                    RowBox[{"2", ",", 
+                    RowBox[{
+                    "Flatten", "[", "Compactor`Private`lowLeafCountIDs", 
+                    "]"}]}], "\[RightDoubleBracket]"}]}], ";", 
+                    RowBox[{"Compactor`Private`compacted3a", "=", 
+                    RowBox[{
+                    RowBox[{
+                    "Compactor`Private`compacted3", "\[LeftDoubleBracket]", 
+                    "1", "\[RightDoubleBracket]"}], "/.", "\[VeryThinSpace]", 
+                    "Compactor`Private`lowLeafCountRep"}]}], ";", 
+                    RowBox[{"Compactor`Private`compacted3b", "=", 
+                    RowBox[{"Delete", "[", 
+                    RowBox[{
+                    RowBox[{
+                    "Compactor`Private`compacted3", "\[LeftDoubleBracket]", 
+                    "2", "\[RightDoubleBracket]"}], ",", 
+                    "Compactor`Private`lowLeafCountIDs"}], "]"}]}], ";", 
+                    RowBox[{"Compactor`Private`compacted3", "=", 
+                    RowBox[{"Simplify", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "Compactor`Private`compacted3a", "/.", "\[VeryThinSpace]",
+                     "Compactor`Private`lowLeafCountRep"}], ",", 
+                    RowBox[{
+                    "Compactor`Private`compacted3b", "/.", "\[VeryThinSpace]",
+                     "Compactor`Private`lowLeafCountRep"}]}], "}"}], "]"}]}], 
+                    ";"}], ")"}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    "OptionValue", "[", "EliminateNegationReplacements", 
+                    "]"}], ",", 
+                    RowBox[{
+                    RowBox[{"Compactor`Private`negations1", "=", 
+                    RowBox[{"Position", "[", 
+                    RowBox[{
+                    RowBox[{
+                    "Compactor`Private`compacted3", "\[LeftDoubleBracket]", 
+                    RowBox[{"2", ",", "All", ",", "2"}], 
+                    "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{"-", "_"}], ",", 
+                    RowBox[{"{", "1", "}"}]}], "]"}]}], ";", 
+                    RowBox[{"Compactor`Private`negations", "=", 
+                    RowBox[{
+                    "Flatten", "[", "Compactor`Private`negations1", "]"}]}], 
+                    ";", 
+                    RowBox[{"Compactor`Private`negationReplacements", "=", 
+                    RowBox[{
+                    "Compactor`Private`compacted3", "\[LeftDoubleBracket]", 
+                    RowBox[{"2", ",", "Compactor`Private`negations"}], 
+                    "\[RightDoubleBracket]"}]}], ";", 
+                    RowBox[{"Compactor`Private`cc1", "=", 
+                    RowBox[{
+                    RowBox[{
+                    "Compactor`Private`compacted3", "\[LeftDoubleBracket]", 
+                    "1", "\[RightDoubleBracket]"}], "/.", "\[VeryThinSpace]", 
+                    "Compactor`Private`negationReplacements"}]}], ";", 
+                    RowBox[{"Compactor`Private`cc2", "=", 
+                    RowBox[{
+                    RowBox[{"Delete", "[", 
+                    RowBox[{
+                    RowBox[{
+                    "Compactor`Private`compacted3", "\[LeftDoubleBracket]", 
+                    "2", "\[RightDoubleBracket]"}], ",", 
+                    "Compactor`Private`negations1"}], "]"}], "/.", 
+                    "\[VeryThinSpace]", 
+                    "Compactor`Private`negationReplacements"}]}], ";", 
+                    RowBox[{"Compactor`Private`compacted4", "=", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "Compactor`Private`cc1", ",", "Compactor`Private`cc2"}], 
+                    "}"}]}], ";"}], ",", 
+                    RowBox[{
+                    RowBox[{
+                    "Compactor`Private`compacted4", "=", 
+                    "Compactor`Private`compacted3"}], ";"}]}], "]"}], ";", 
+                    RowBox[{"Compactor`Private`symbolReplacements", "=", 
+                    RowBox[{"OptionValue", "[", "ReplacementSymbols", "]"}]}],
+                     ";", 
+                    RowBox[{"Compactor`Private`length4", "=", 
+                    RowBox[{"Length", "[", 
+                    RowBox[{
+                    "Compactor`Private`compacted4", "\[LeftDoubleBracket]", 
+                    RowBox[{"2", ",", "All", ",", "1"}], 
+                    "\[RightDoubleBracket]"}], "]"}]}], ";", 
+                    RowBox[{"Compactor`Private`compacted5", "=", 
+                    RowBox[{
+                    "Compactor`Private`compacted4", "/.", "\[VeryThinSpace]", 
+                    RowBox[{"Table", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Compactor`Private`compacted4", 
+                    "\[LeftDoubleBracket]", 
+                    RowBox[{"2", ",", "Compactor`Private`iind", ",", "1"}], 
+                    "\[RightDoubleBracket]"}], "\[Rule]", 
+                    RowBox[{
+                    "Compactor`Private`symbolReplacements", 
+                    "\[LeftDoubleBracket]", "Compactor`Private`iind", 
+                    "\[RightDoubleBracket]"}]}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "Compactor`Private`iind", ",", "1", ",", 
+                    "Compactor`Private`length4"}], "}"}]}], "]"}]}]}], ";", 
+                    RowBox[{
+                    "Compactor`Private`compacted5", "/.", "\[VeryThinSpace]", 
+                    "Compactor`Private`recoverReplacements"}]}]}], "]"}]}]}
+                    },
+                    DefaultBaseStyle->"Column",
+                    GridBoxAlignment->{"Columns" -> {{Left}}},
+                    
+                    GridBoxItemSize->{
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}]},
+                  {
+                   PaneSelectorBox[{True->
+                    ButtonBox[
+                    PaneSelectorBox[{False->
+                    TemplateBox[{"\[ThickSpace]", "\"\[ThickSpace]\"", 
+                    StyleBox[
+                    "\"Options\"", "InformationRowLabel", StripOnInput -> 
+                    False], 
+                    DynamicBox[
+                    FEPrivate`FrontEndResource[
+                    "FEBitmaps", "DownPointerOpener"]]},
+                    "RowWithSeparators"], True->
+                    TemplateBox[{"\[ThickSpace]", "\"\[ThickSpace]\"", 
+                    StyleBox[
+                    "\"Options\"", "InformationRowLabel", StripOnInput -> 
+                    False], 
+                    DynamicBox[
+                    FEPrivate`FrontEndResource[
+                    "FEBitmaps", "DownPointerOpenerHot"]]},
+                    "RowWithSeparators"]}, Dynamic[
+                    CurrentValue["MouseOver"]],
+                    FrameMargins->0,
+                    ImageSize->Automatic],
+                    Appearance->None,
+                    BaseStyle->None,
+                    
+                    ButtonFunction:>(Part[System`InformationDump`open$$, 9] = 
+                    False),
+                    Evaluator->Automatic,
+                    FrameMargins->0,
+                    ImageMargins->0,
+                    Method->"Preemptive"], False->
+                    ButtonBox[
+                    PaneSelectorBox[{False->
+                    TemplateBox[{"\[ThickSpace]", "\"\[ThickSpace]\"", 
+                    StyleBox[
+                    "\"Options\"", "InformationRowLabel", StripOnInput -> 
+                    False], 
+                    DynamicBox[
+                    FEPrivate`FrontEndResource[
+                    "FEBitmaps", "RightPointerOpener"]]},
+                    "RowWithSeparators"], True->
+                    TemplateBox[{"\[ThickSpace]", "\"\[ThickSpace]\"", 
+                    StyleBox[
+                    "\"Options\"", "InformationRowLabel", StripOnInput -> 
+                    False], 
+                    DynamicBox[
+                    FEPrivate`FrontEndResource[
+                    "FEBitmaps", "RightPointerOpenerHot"]]},
+                    "RowWithSeparators"]}, Dynamic[
+                    CurrentValue["MouseOver"]],
+                    FrameMargins->0,
+                    ImageSize->Automatic],
+                    Appearance->None,
+                    BaseStyle->None,
+                    
+                    ButtonFunction:>(Part[System`InformationDump`open$$, 9] = 
+                    True),
+                    Evaluator->Automatic,
+                    FrameMargins->0,
+                    ImageMargins->0,
+                    Method->"Preemptive"]}, Dynamic[
+                    FEPrivate`Part[System`InformationDump`open$$, 9]]], 
+                   PaneSelectorBox[{True->GridBox[{
+                    {
+                    RowBox[{"LeafCountThreshold", "\[Rule]", "1"}]},
+                    {
+                    RowBox[{"EliminateNumericRules", "\[Rule]", "True"}]},
+                    {
+                    RowBox[{
+                    "EliminateIntermediateRules", "\[Rule]", "False"}]},
+                    {
+                    RowBox[{
+                    "EliminateNegationReplacements", "\[Rule]", "True"}]},
+                    {
+                    RowBox[{"ReplacementSymbols", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "\[CapitalAlpha]", ",", "\[CapitalBeta]", ",", 
+                    "\[CapitalGamma]", ",", "\[CapitalDelta]", ",", 
+                    "\[CapitalEpsilon]", ",", "\[CapitalZeta]", ",", 
+                    "\[CapitalEta]", ",", "\[CapitalTheta]", ",", 
+                    "\[CapitalIota]", ",", "\[CapitalKappa]", ",", 
+                    "\[CapitalLambda]", ",", "\[CapitalMu]", ",", 
+                    "\[CapitalNu]", ",", "\[CapitalXi]", ",", 
+                    "\[CapitalOmicron]", ",", "\[CapitalPi]", ",", 
+                    "\[CapitalRho]", ",", "\[CapitalSigma]", ",", 
+                    "\[CapitalTau]", ",", "\[CapitalUpsilon]", ",", 
+                    "\[CapitalPhi]", ",", "\[CapitalChi]", ",", 
+                    "\[CapitalPsi]", ",", "\[CapitalOmega]", ",", 
+                    "\[ScriptCapitalA]", ",", "\[ScriptCapitalB]", ",", 
+                    "\[ScriptCapitalC]", ",", "\[ScriptCapitalD]", ",", 
+                    "\[ScriptCapitalE]", ",", "\[ScriptCapitalF]", ",", 
+                    "\[ScriptCapitalG]", ",", "\[ScriptCapitalH]", ",", 
+                    "\[ScriptCapitalI]", ",", "\[ScriptCapitalJ]", ",", 
+                    "\[ScriptCapitalK]", ",", "\[ScriptCapitalL]", ",", 
+                    "\[ScriptCapitalM]", ",", "\[ScriptCapitalN]", ",", 
+                    "\[ScriptCapitalO]", ",", "\[ScriptCapitalP]", ",", 
+                    "\[ScriptCapitalQ]", ",", "\[ScriptCapitalR]", ",", 
+                    "\[ScriptCapitalS]", ",", "\[ScriptCapitalT]", ",", 
+                    "\[ScriptCapitalU]", ",", "\[ScriptCapitalV]", ",", 
+                    "\[ScriptCapitalW]", ",", "\[ScriptCapitalX]", ",", 
+                    "\[ScriptCapitalY]", ",", "\[ScriptCapitalZ]"}], "}"}]}]},
+                    {
+                    StyleBox[
+                    
+                    TemplateBox[{
+                    "\"(\"", "\"\[InvisibleSpace]\"", "5", "\" total)\""},
+                    "RowDefault"], "InformationRowOpener",
+                    StripOnInput->False]}
+                    },
+                    BaselinePosition->{Baseline, {1, 1}},
+                    DefaultBaseStyle->"Column",
+                    GridBoxAlignment->{"Columns" -> {{Left}}},
+                    
+                    GridBoxItemSize->{
+                    "Columns" -> {{Automatic}}, "Rows" -> {{1.}}}], False->
+                    RowBox[{
+                    RowBox[{"LeafCountThreshold", "\[Rule]", "1"}], 
+                    "\[ThinSpace]", 
+                    StyleBox["\<\"\[Ellipsis]\"\>", "InformationRowOpener",
+                    StripOnInput->False], "\[ThinSpace]", 
+                    StyleBox[
+                    
+                    TemplateBox[{
+                    "\"(\"", "\"\[InvisibleSpace]\"", "5", "\" total)\""},
+                    "RowDefault"], "InformationRowOpener",
+                    StripOnInput->False]}]}, Dynamic[
+                    FEPrivate`Part[System`InformationDump`open$$, 9]],
+                    BaselinePosition->Baseline,
+                    ImageSize->Automatic]},
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Full Name\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"FullName\"",
+                    TooltipStyle->"TextStyling"],
+                    
+                    Annotation[#, "FullName", 
+                    "Tooltip"]& ], "\<\"Compactor`Compact\"\>"}
+                 },
+                 AutoDelete->False,
+                 GridBoxAlignment->{"Columns" -> {Right, Left}},
+                 GridBoxDividers->None,
+                 GridBoxItemSize->{"Columns" -> {Automatic, Automatic}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.5599999999999999]}, 
+                    Offset[0.27999999999999997`]}, "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.8]}, 
+                    Offset[0.2]}}], "DialogStyle",
+                StripOnInput->False],
+               DynamicModuleValues:>{}]}
+            },
+            DefaultBaseStyle->"Column",
+            GridBoxAlignment->{"Columns" -> {{Left}}},
+            GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {{False}}},
+            
+            GridBoxItemSize->{
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[3.6]}, 
+                Offset[0.2]}}],
+           FrameMargins->6], ""},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpener"]], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpenerHot"]]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, False],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"], False->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"Compact[\\!\\(\\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\
+\\),...] \\ngenerates a compact form of \\!\\(\\*StyleBox[\\\"expr\\\", \
+\\\"TI\\\"]\\) by minimizing the number of leaf nodes of the expr syntax tree \
+and providing relevant replacement rules. \
+\\n\\!\\(\\*StyleBox[\\\"Options\\\", \\\"SubSection\\\"]\\)\\nThe option \\!\
+\\(\\*StyleBox[\\\"EliminateNumericRules\\\", \\\"TI\\\"]\\) eliminates rules \
+that contain only numbers. Defaults to True. \\nThe option \\!\\(\\*StyleBox[\
+\\\"EliminateIntermediateRules\\\", \\\"TI\\\"]\\) eliminates rules that \
+appear only in the replacements. Defaults to False. \\nThe option \
+\\!\\(\\*StyleBox[\\\"EliminateNegationReplacements\\\", \\\"TI\\\"]\\) \
+converts subexpressions of the form \\!\\(\\*StyleBox[\\\"-1+x\\\", \
+\\\"TI\\\"]\\) to \\!\\(\\*StyleBox[\\\"x-1\\\", \\\"TI\\\"]\\). Defaults to \
+True. \\nThe option \\!\\(\\*StyleBox[\\\"ReplacementSymbols\\\", \\\"TI\\\"]\
+\\) contains an ordered list of replacement symbols. Defaults to Greek and \
+Caligraphic uppercase letters.\"\>", "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpener"],
+               ImageSizeCache->{10., {3., 7.}}], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpenerHot"],
+               ImageSizeCache->{10., {3., 7.}}]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, True],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"]}, Dynamic[System`InformationDump`open$$],
+      BaselinePosition->Baseline,
+      FrameMargins->0,
+      ImageSize->Automatic],
+     DynamicModuleValues:>{}],
+    BaseStyle->"InformationGridFrame",
+    StripOnInput->False], "InformationGridPlain",
+   StripOnInput->False],
+  InformationData[
+   Association[
+   "ObjectType" -> "Symbol", "Usage" -> 
+    "Compact[\!\(\*StyleBox[\"expr\", \"TI\"]\),...] \ngenerates a compact \
+form of \!\(\*StyleBox[\"expr\", \"TI\"]\) by minimizing the number of leaf \
+nodes of the expr syntax tree and providing relevant replacement rules. \n\
+\!\(\*StyleBox[\"Options\", \"SubSection\"]\)\nThe option \
+\!\(\*StyleBox[\"EliminateNumericRules\", \"TI\"]\) eliminates rules that \
+contain only numbers. Defaults to True. \nThe option \
+\!\(\*StyleBox[\"EliminateIntermediateRules\", \"TI\"]\) eliminates rules \
+that appear only in the replacements. Defaults to False. \nThe option \
+\!\(\*StyleBox[\"EliminateNegationReplacements\", \"TI\"]\) converts \
+subexpressions of the form \!\(\*StyleBox[\"-1+x\", \"TI\"]\) to \
+\!\(\*StyleBox[\"x-1\", \"TI\"]\). Defaults to True. \nThe option \
+\!\(\*StyleBox[\"ReplacementSymbols\", \"TI\"]\) contains an ordered list of \
+replacement symbols. Defaults to Greek and Caligraphic uppercase letters.", 
+    "Documentation" -> None, "OwnValues" -> None, "UpValues" -> None, 
+    "DownValues" -> 
+    Information`InformationValueForm[
+     DownValues, Compactor`Compact, {Compactor`Compact[
+         Pattern[Compactor`Private`expr, 
+          Blank[]], 
+         OptionsPattern[]] :> 
+       Module[{Compactor`Private`subscriptSymbols, 
+          Compactor`Private`otherSymbols, 
+          Compactor`Private`exprNoSubscriptSymbols, 
+          Compactor`Private`subscriptReplacements, 
+          Compactor`Private`DummySymbol2d042193, Compactor`Private`variables, 
+          Compactor`Private`func, Compactor`Private`recoverReplacements, 
+          Compactor`Private`compacted, Compactor`Private`compacted2, 
+          Compactor`Private`compacted3, Compactor`Private`compacted4, 
+          Compactor`Private`compacted5, Compactor`Private`rep, 
+          Compactor`Private`unnecessary, Compactor`Private`symbolReplacements,
+           Compactor`Private`length4, Compactor`Private`keep, 
+          Compactor`Private`keepIds, Compactor`Private`keepIds2, 
+          Compactor`Private`rules, Compactor`Private`lengthK, 
+          Compactor`Private`dropIds, Compactor`Private`ppAAppAAbb, 
+          Compactor`Private`notVariables, Compactor`Private`repNotMembers, 
+          Compactor`Private`compacted2a, Compactor`Private`final, 
+          Compactor`Private`iind, Compactor`Private`negationReplacements, 
+          Compactor`Private`negations1, Compactor`Private`negations, 
+          Compactor`Private`cc1, Compactor`Private`cc2, 
+          Compactor`Private`numericRepRules, Compactor`Private`compacted3a, 
+          Compactor`Private`compacted3b, Compactor`Private`numericIDs, 
+          Compactor`Private`lowLeafCountIDs, 
+          Compactor`Private`lowLeafCountRep}, 
+         Compactor`Private`subscriptSymbols = Union[
+            Cases[Compactor`Private`expr, 
+             Subscript[
+              Blank[Symbol], 
+              Blank[]], Infinity]]; 
+         Compactor`Private`subscriptReplacements = 
+          MapThread[# -> #2& , {Compactor`Private`subscriptSymbols, 
+             Map[Compactor`Private`DummySymbol2d042193[#]& , 
+              Flatten[
+               Map[
+               Position[Compactor`Private`subscriptSymbols, #]& , 
+                Compactor`Private`subscriptSymbols]]]}]; 
+         Compactor`Private`exprNoSubscriptSymbols = 
+          ReplaceAll[
+           Compactor`Private`expr, Compactor`Private`subscriptReplacements]; 
+         Compactor`Private`otherSymbols = Union[
+            Cases[Compactor`Private`exprNoSubscriptSymbols, 
+             Blank[Symbol], Infinity]]; 
+         Compactor`Private`variables = 
+          Join[Compactor`Private`otherSymbols, 
+            Compactor`Private`subscriptSymbols]; 
+         Compactor`Private`func = First[
+            Cases[
+             (Compile[
+              SlotSequence[1], 
+              CompilationOptions -> {"ExpressionOptimization" -> True}]& )[
+             Compactor`Private`variables, Compactor`Private`expr], 
+             Pattern[Compactor`Private`x, 
+               Blank[Function]] :> Compactor`Private`x]]; 
+         Compactor`Private`recoverReplacements = MapThread[# -> #2& , {
+             Part[Compactor`Private`func, 1], Compactor`Private`variables}]; 
+         Compactor`Private`compacted = (ReplaceAll[
+            ReplaceAll[
+             ReplaceAll[Compactor`Private`func, #], HoldPattern[
+               Function[
+                Blank[], 
+                Block[
+                 Blank[], 
+                 Pattern[Compactor`Private`b, 
+                  Blank[]]]]] :> Hold[
+               \[FormalM][{Compactor`Private`ppAAppAAbb}, 
+                Compactor`Private`b]]], \[FormalM] -> Module]& )[
+            (MapIndexed[# -> Apply[Compactor`Private`ppAAppAAbb, #2]& , #]& )[
+             DeleteDuplicates[
+              Cases[Compactor`Private`func, 
+               Condition[
+                Pattern[Compactor`Private`s, 
+                 Blank[Symbol]], "Compile`" === Context[Compactor`Private`s]],
+                Infinity]]]]; Compactor`Private`rep = ReplaceAll[
+            ReplaceAll[Compactor`Private`compacted, Hold[
+               Module[
+                Blank[], Pattern[Compactor`Private`s, 
+                  BlankNullSequence[]]; Pattern[Compactor`Private`f, 
+                  Blank[]]]] :> Hold[
+               ReplaceAll[Compactor`Private`f, {Compactor`Private`s}]]], Set -> 
+            Rule]; Compactor`Private`unnecessary = Part[
+            Cases[
+             Tally[
+              Cases[Compactor`Private`rep, 
+               Compactor`Private`ppAAppAAbb[
+                Blank[]], Infinity]], {
+              Blank[], 2}], All, 1]; 
+         Compactor`Private`compacted2 = (ReplaceRepeated[
+            DeleteCases[Compactor`Private`rep, #, Infinity], 
+            Cases[Compactor`Private`rep, #, Infinity]]& )[
+            Verbatim[Rule][
+             Apply[Alternatives, Compactor`Private`unnecessary], 
+             Blank[]]]; 
+         If[Length[Compactor`Private`compacted2] == 2, 
+           MessageName[Compactor`Private`Compactor, "noRefinement"] = 
+            "The compiler could not optimize the expression. This may be \
+because the expression cannot be further simplified. Consider modifying the \
+expression to guarantee Real domain assumptions hold."; Message[
+             MessageName[Compactor`Private`Compactor, "noRefinement"]]; 
+           Return[]; Null]; If[
+           OptionValue[Compactor`EliminateIntermediateRules], 
+           Compactor`Private`keep = Union[
+              Cases[
+               Part[Compactor`Private`compacted2, 1, 1], 
+               Compactor`Private`ppAAppAAbb[
+                Blank[]], Infinity]]; 
+           Compactor`Private`lengthK = 
+            Part[Compactor`Private`compacted2, 1, 2, All, 1]; 
+           Compactor`Private`keepIds2 = Flatten[
+              Select[
+               Table[
+                Position[Compactor`Private`lengthK, 
+                 Part[Compactor`Private`keep, Compactor`Private`iind]], {
+                Compactor`Private`iind, 1, 
+                 Length[Compactor`Private`keep]}], # =!= {}& ]]; 
+           Compactor`Private`notVariables = Flatten[
+              Position[
+               Table[
+                Length[
+                 Variables[
+                  Part[
+                  Compactor`Private`compacted2, 1, 2, Compactor`Private`iind, 
+                   2]]], {Compactor`Private`iind, 1, 
+                 Length[
+                  Part[Compactor`Private`compacted2, 1, 2]]}], 
+               PatternTest[
+                Blank[], # == 0& ]]]; 
+           Compactor`Private`keepIds = 
+            Complement[
+             Compactor`Private`keepIds2, Compactor`Private`notVariables]; 
+           Compactor`Private`repNotMembers = 
+            Intersection[
+             Compactor`Private`keepIds2, Compactor`Private`notVariables]; 
+           Compactor`Private`rules = Part[Compactor`Private`compacted2, 1, 2]; 
+           Compactor`Private`compacted2a = Evaluate[
+              ReplaceAll[
+               Part[Compactor`Private`compacted2, 1, 1], 
+               Part[
+               Compactor`Private`rules, Compactor`Private`repNotMembers]]]; 
+           Compactor`Private`dropIds = Complement[
+              Table[Compactor`Private`iind, {Compactor`Private`iind, 1, 
+                Length[Compactor`Private`rules]}], Compactor`Private`keepIds]; 
+           Do[
+             If[
+              Not[
+               MemberQ[Compactor`Private`keepIds, Compactor`Private`iind]], 
+              Compactor`Private`rules = Evaluate[
+                ReplaceAll[Compactor`Private`rules, 
+                 Part[Compactor`Private`rules, Compactor`Private`iind]]]], {
+             Compactor`Private`iind, 1, 
+              Length[Compactor`Private`rules]}]; 
+           Compactor`Private`compacted3 = {Compactor`Private`compacted2a, 
+              Part[Compactor`Private`rules, Compactor`Private`keepIds]}; Null,
+            Compactor`Private`compacted3 = {
+              Part[Compactor`Private`compacted2, 1, 1], 
+              Part[Compactor`Private`compacted2, 1, 2]}; Null]; If[
+           OptionValue[Compactor`EliminateNumericRules], 
+           Compactor`Private`numericIDs = Flatten[
+              Position[
+               Part[Compactor`Private`compacted3, 2, All, 2], 
+               PatternTest[
+                Blank[], NumericQ[#]& ], 1]]; 
+           Compactor`Private`numericRepRules = 
+            Part[Compactor`Private`compacted3, 2, 
+              Compactor`Private`numericIDs]; 
+           Compactor`Private`compacted3a = ReplaceAll[
+              Part[Compactor`Private`compacted3, 1], 
+              Compactor`Private`numericRepRules]; 
+           Compactor`Private`compacted3b = Delete[
+              Part[Compactor`Private`compacted3, 2], 
+              Transpose[{Compactor`Private`numericIDs}]]; 
+           Compactor`Private`compacted3 = 
+            Simplify[{Compactor`Private`compacted3a, 
+               ReplaceAll[
+               Compactor`Private`compacted3b, 
+                Compactor`Private`numericRepRules]}]; Null]; (
+          Compactor`Private`lowLeafCountIDs = Position[
+             Map[LeafCount[
+               Part[#, 2]]& , 
+              Part[Compactor`Private`compacted3, 2]], 
+             PatternTest[
+              Blank[], # < OptionValue[Compactor`LeafCountThreshold]& ]]; 
+          Compactor`Private`lowLeafCountRep = 
+           Part[Compactor`Private`compacted3, 2, 
+             Flatten[Compactor`Private`lowLeafCountIDs]]; 
+          Compactor`Private`compacted3a = ReplaceAll[
+             Part[Compactor`Private`compacted3, 1], 
+             Compactor`Private`lowLeafCountRep]; 
+          Compactor`Private`compacted3b = Delete[
+             Part[Compactor`Private`compacted3, 2], 
+             Compactor`Private`lowLeafCountIDs]; 
+          Compactor`Private`compacted3 = Simplify[{
+              ReplaceAll[
+              Compactor`Private`compacted3a, 
+               Compactor`Private`lowLeafCountRep], 
+              ReplaceAll[
+              Compactor`Private`compacted3b, 
+               Compactor`Private`lowLeafCountRep]}]; Null); If[
+           OptionValue[Compactor`EliminateNegationReplacements], 
+           Compactor`Private`negations1 = Position[
+              Part[Compactor`Private`compacted3, 2, All, 2], -Blank[], {1}]; 
+           Compactor`Private`negations = 
+            Flatten[Compactor`Private`negations1]; 
+           Compactor`Private`negationReplacements = 
+            Part[Compactor`Private`compacted3, 2, 
+              Compactor`Private`negations]; Compactor`Private`cc1 = ReplaceAll[
+              Part[Compactor`Private`compacted3, 1], 
+              Compactor`Private`negationReplacements]; 
+           Compactor`Private`cc2 = ReplaceAll[
+              Delete[
+               Part[Compactor`Private`compacted3, 2], 
+               Compactor`Private`negations1], 
+              Compactor`Private`negationReplacements]; 
+           Compactor`Private`compacted4 = {
+             Compactor`Private`cc1, Compactor`Private`cc2}; Null, 
+           Compactor`Private`compacted4 = Compactor`Private`compacted3; Null]; 
+         Compactor`Private`symbolReplacements = 
+          OptionValue[Compactor`ReplacementSymbols]; 
+         Compactor`Private`length4 = Length[
+            Part[Compactor`Private`compacted4, 2, All, 1]]; 
+         Compactor`Private`compacted5 = 
+          ReplaceAll[Compactor`Private`compacted4, 
+            Table[
+            Part[Compactor`Private`compacted4, 2, Compactor`Private`iind, 1] -> 
+             Part[Compactor`Private`symbolReplacements, 
+               Compactor`Private`iind], {
+             Compactor`Private`iind, 1, Compactor`Private`length4}]]; 
+         ReplaceAll[
+          Compactor`Private`compacted5, 
+           Compactor`Private`recoverReplacements]]}], "SubValues" -> None, 
+    "DefaultValues" -> None, "NValues" -> None, "FormatValues" -> None, 
+    "Options" -> {
+     Compactor`LeafCountThreshold -> 1, Compactor`EliminateNumericRules -> 
+      True, Compactor`EliminateIntermediateRules -> False, 
+      Compactor`EliminateNegationReplacements -> True, 
+      Compactor`ReplacementSymbols -> {
+       Compactor`\[CapitalAlpha], Compactor`\[CapitalBeta], 
+        Compactor`\[CapitalGamma], Compactor`\[CapitalDelta], 
+        Compactor`\[CapitalEpsilon], Compactor`\[CapitalZeta], 
+        Compactor`\[CapitalEta], Compactor`\[CapitalTheta], 
+        Compactor`\[CapitalIota], Compactor`\[CapitalKappa], 
+        Compactor`\[CapitalLambda], Compactor`\[CapitalMu], 
+        Compactor`\[CapitalNu], Compactor`\[CapitalXi], 
+        Compactor`\[CapitalOmicron], Compactor`\[CapitalPi], 
+        Compactor`\[CapitalRho], Compactor`\[CapitalSigma], 
+        Compactor`\[CapitalTau], Compactor`\[CapitalUpsilon], 
+        Compactor`\[CapitalPhi], Compactor`\[CapitalChi], 
+        Compactor`\[CapitalPsi], Compactor`\[CapitalOmega], 
+        Compactor`\[ScriptCapitalA], Compactor`\[ScriptCapitalB], 
+        Compactor`\[ScriptCapitalC], Compactor`\[ScriptCapitalD], 
+        Compactor`\[ScriptCapitalE], Compactor`\[ScriptCapitalF], 
+        Compactor`\[ScriptCapitalG], Compactor`\[ScriptCapitalH], 
+        Compactor`\[ScriptCapitalI], Compactor`\[ScriptCapitalJ], 
+        Compactor`\[ScriptCapitalK], Compactor`\[ScriptCapitalL], 
+        Compactor`\[ScriptCapitalM], Compactor`\[ScriptCapitalN], 
+        Compactor`\[ScriptCapitalO], Compactor`\[ScriptCapitalP], 
+        Compactor`\[ScriptCapitalQ], Compactor`\[ScriptCapitalR], 
+        Compactor`\[ScriptCapitalS], Compactor`\[ScriptCapitalT], 
+        Compactor`\[ScriptCapitalU], Compactor`\[ScriptCapitalV], 
+        Compactor`\[ScriptCapitalW], Compactor`\[ScriptCapitalX], 
+        Compactor`\[ScriptCapitalY], Compactor`\[ScriptCapitalZ]}}, 
+    "Attributes" -> {}, "FullName" -> "Compactor`Compact"], False]]], "Output",
+ CellChangeTimes->{{3.8026094989933825`*^9, 3.8026095237607155`*^9}, 
+   3.802609690647254*^9, 3.802610241172201*^9, {3.8026104194508777`*^9, 
+   3.8026104639653745`*^9}, 3.8026132308156567`*^9, 3.8026133154357786`*^9, {
+   3.802613578572983*^9, 3.802613587255031*^9}, 3.802613636157445*^9, 
+   3.802613681391139*^9, {3.8026140209234514`*^9, 3.8026140507667494`*^9}, {
+   3.8026169220425777`*^9, 3.802616928665455*^9}, 3.802623367205311*^9, 
+   3.802623405338978*^9, 3.8026881034640017`*^9, 3.8026882942589207`*^9, 
+   3.8026890797297387`*^9, 3.802689189987827*^9, 3.802689620390375*^9, 
+   3.8026899755767813`*^9, 3.802690297896685*^9, 3.8026903595686107`*^9, 
+   3.8026904661678977`*^9, 3.802691223905141*^9, 3.80269670006736*^9, 
+   3.80271195320545*^9, 3.8027120518394504`*^9, 3.8027122465979805`*^9, 
+   3.8030381717949066`*^9, 3.8032993563944225`*^9, 3.803299402291608*^9, 
+   3.8032994473549356`*^9, 3.8032995493574886`*^9, 3.8032996944509344`*^9, 
+   3.803299737703318*^9, 3.80329993478307*^9, 3.803299967462146*^9, {
+   3.8032999994245567`*^9, 3.803300006818757*^9}, 3.8033046336395235`*^9, 
+   3.8033065110113783`*^9, 3.8033065950076885`*^9, {3.803306636098273*^9, 
+   3.8033066645465117`*^9}, 3.8033067212769957`*^9, 3.803307471531659*^9, 
+   3.803307543973776*^9, 3.8033193845438995`*^9, 3.8033199563216257`*^9, 
+   3.8033201817312775`*^9, 3.803322267773628*^9, 3.803322651689022*^9},
+ CellLabel->
+  "Out[180]=",ExpressionUUID->"4a88971d-7f58-4cf2-a5c3-f0fb35f3cdc5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"expr", "=", 
+   RowBox[{
+    RowBox[{"a", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["y", "0"], "+", "2"}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"x", "+", "1"}], ")"}]}], "+", 
+    RowBox[{"b", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"x", "+", "1"}], ")"}], "^", "2"}]}], "+", 
+    RowBox[{
+     RowBox[{"Cos", "[", 
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox["y", "0"], "+", "2"}], ")"}], "]"}], 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"c", " ", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"x", "+", "1"}], ")"}], "^", "3"}]}], ")"}], "/", 
+      RowBox[{"Sin", "[", 
+       RowBox[{"1", "+", "x"}], "]"}]}]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"comp", "=", 
+  RowBox[{"Compact", "[", "expr", "]"}]}]}], "Input",
+ CellChangeTimes->{{3.802610246324828*^9, 3.8026102930836897`*^9}, {
+   3.802613239141286*^9, 3.8026132639100957`*^9}, {3.8026133348077517`*^9, 
+   3.802613363671815*^9}, {3.8026134276023893`*^9, 3.802613438081849*^9}, {
+   3.8026137185350466`*^9, 3.8026137187631626`*^9}, 3.802614059943819*^9, {
+   3.8026234286411943`*^9, 3.8026234579186893`*^9}, {3.8026235315267487`*^9, 
+   3.802623534807681*^9}, {3.8026236734280167`*^9, 3.8026236736944747`*^9}, {
+   3.8026880901949806`*^9, 3.8026880914470253`*^9}},
+ CellLabel->
+  "In[181]:=",ExpressionUUID->"cc8bae76-3c06-42d9-99f5-2ae515b3666d"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\[CapitalAlpha]", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"b", " ", "\[CapitalAlpha]"}], "+", 
+      RowBox[{"a", " ", "\[CapitalBeta]"}], "+", 
+      RowBox[{"c", " ", 
+       SuperscriptBox["\[CapitalAlpha]", "2"], " ", 
+       RowBox[{"Cos", "[", "\[CapitalBeta]", "]"}], " ", 
+       RowBox[{"Csc", "[", "\[CapitalAlpha]", "]"}]}]}], ")"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[CapitalAlpha]", "\[Rule]", 
+      RowBox[{"1", "+", "x"}]}], ",", 
+     RowBox[{"\[CapitalBeta]", "\[Rule]", 
+      RowBox[{"2", "+", 
+       SubscriptBox["y", "0"]}]}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.8026094991143556`*^9, 3.8026095241553106`*^9}, 
+   3.8026096907809696`*^9, {3.802610241261526*^9, 3.8026102934884586`*^9}, {
+   3.802610419533227*^9, 3.8026104640297747`*^9}, 3.8026132309332714`*^9, 
+   3.8026132648151307`*^9, {3.8026133155284443`*^9, 3.8026133640998697`*^9}, {
+   3.802613428582827*^9, 3.802613445478648*^9}, {3.8026135787146316`*^9, 
+   3.8026135874413915`*^9}, 3.8026136362368736`*^9, 3.8026136814744463`*^9, 
+   3.8026137191498137`*^9, {3.802614021049901*^9, 3.8026140606969147`*^9}, {
+   3.8026169221628513`*^9, 3.8026169288519063`*^9}, 3.802623367277541*^9, {
+   3.802623405478518*^9, 3.8026234587962275`*^9}, {3.802623660388135*^9, 
+   3.8026236742410264`*^9}, 3.8026881035668325`*^9, 3.802688294420622*^9, 
+   3.802689079873625*^9, 3.8026891902026296`*^9, 3.802689620803896*^9, 
+   3.8026899756945934`*^9, 3.802690297989883*^9, 3.802690359964942*^9, 
+   3.8026904666563168`*^9, 3.802691224063763*^9, 3.8026967002266874`*^9, 
+   3.802711953559385*^9, 3.8027120521948013`*^9, 3.8027122467053423`*^9, 
+   3.8030381719437647`*^9, 3.803299356821512*^9, 3.803299402714773*^9, 
+   3.8032994474601707`*^9, 3.8032995495606227`*^9, 3.8032996946190042`*^9, 
+   3.80329973805785*^9, 3.803299934928432*^9, 3.8032999675620403`*^9, {
+   3.803299999524678*^9, 3.803300006918141*^9}, 3.8033046337228603`*^9, 
+   3.803306511333304*^9, 3.8033065955030823`*^9, {3.803306636316412*^9, 
+   3.8033066647556286`*^9}, 3.80330672141276*^9, 3.8033074717521696`*^9, 
+   3.803307544080175*^9, 3.8033193892263117`*^9, 3.803319961575239*^9, 
+   3.8033201922742825`*^9, 3.8033222715071173`*^9, 3.803322651838662*^9},
+ CellLabel->
+  "Out[182]=",ExpressionUUID->"e11f076f-8e29-4457-a0ec-5af4d7b18e10"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"On", "[", "Assert", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Assert", "[", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"comp", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "/.", 
+          RowBox[{"comp", "[", 
+           RowBox[{"[", "2", "]"}], "]"}]}], ")"}], "-", "expr"}], ")"}], 
+      "\[Equal]", "0"}], ")"}], "//", "Simplify"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Off", "[", "Assert", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.8026881143144693`*^9, 3.802688134695342*^9}, {
+  3.80329999113778*^9, 3.803300004660442*^9}},
+ CellLabel->
+  "In[183]:=",ExpressionUUID->"39b9cc98-5d42-4a74-9b68-ca8e17214fa6"]
+}, Open  ]]
+},
+WindowSize->{906.75, 624.75},
+WindowMargins->{{230.25, Automatic}, {-70.5, Automatic}},
+FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (March 18, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"3ebd3545-6866-45c5-8713-d7729d8a9c14"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 210, 4, 55, "Subsection",ExpressionUUID->"a3fd01e6-3fb2-4b12-8573-32012a8e9220"],
+Cell[793, 28, 1516, 49, 188, "Text",ExpressionUUID->"aa884a00-d479-4a12-8730-c92cfc23364b"],
+Cell[CellGroupData[{
+Cell[2334, 81, 175, 3, 45, "Subsubsection",ExpressionUUID->"82c7b686-6704-4612-8076-83a46e95e346"],
+Cell[CellGroupData[{
+Cell[2534, 88, 6043, 129, 947, "Input",ExpressionUUID->"2ac7899f-0830-490b-8134-3a74dc1665b3"],
+Cell[8580, 219, 1960, 28, 70, "Print",ExpressionUUID->"4f49bc9b-9272-4614-9bcb-67043a5e1bf5"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[10589, 253, 165, 3, 37, "Subsubsection",ExpressionUUID->"53db9d5f-43d6-4c2b-bc70-97d7d7456d9e"],
+Cell[CellGroupData[{
+Cell[10779, 260, 986, 16, 28, "Input",ExpressionUUID->"49861549-10f3-4d18-b09d-e990c1d8a916"],
+Cell[11768, 278, 1038, 22, 22, "Print",ExpressionUUID->"323522e2-ba84-44d1-b4f5-21891708e820"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12867, 307, 205, 4, 55, "Subsection",ExpressionUUID->"53c3b9a5-de5f-4762-b37d-cf1bc32acf07"],
+Cell[CellGroupData[{
+Cell[13097, 315, 629, 16, 122, "Input",ExpressionUUID->"1adff933-f008-4e03-ab5b-f5db8cb33d3c"],
+Cell[13729, 333, 61245, 1222, 241, "Output",ExpressionUUID->"4a88971d-7f58-4cf2-a5c3-f0fb35f3cdc5"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[75011, 1560, 1423, 37, 47, "Input",ExpressionUUID->"cc8bae76-3c06-42d9-99f5-2ae515b3666d"],
+Cell[76437, 1599, 2376, 42, 36, "Output",ExpressionUUID->"e11f076f-8e29-4457-a0ec-5af4d7b18e10"]
+}, Open  ]],
+Cell[78828, 1644, 797, 23, 96, "Input",ExpressionUUID->"39b9cc98-5d42-4a74-9b68-ca8e17214fa6"]
+}, Open  ]]
+}
+]
+*)
+
