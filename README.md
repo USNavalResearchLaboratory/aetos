@@ -11,7 +11,7 @@ Mathematica is a registered trademark of Wolfram Research Inc.
 3. Evaluate the `install_and_test` notebook (Evaluation->Evaluate Notebook)
 
 ## Usage
-A. You can now use the `Compactor` function from any Mathematica Notebook. Example:
+A. You can now use the `Compactor` function from any Mathematica notebook. Example:
 
 ```Mathematica
 << Compactor` (*Loads the package*)
