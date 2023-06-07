@@ -49,7 +49,7 @@ Subsequently AETOS' `Compact` function is used to generate a much shorter expres
 ## License intent
 AETOS is the work of U.S. Government employees, and the relevant source code is in the public domain. Please read the [license](license.txt) to ensure you can satisfy the authorization to use and distribute requirements.
 
-# References
+## References
 [1] Steven N. Rodriguez, Athanasios P. Iliopoulos, Kevin T. Carlberg, Steven L. Brunton, John C. Steuben, John G. Michopoulos,
 Projection-tree reduced-order modeling for fast N-body computations, Journal of Computational Physics, Volume 459, 2022, 111141, ISSN 0021-9991,
 https://doi.org/10.1016/j.jcp.2022.111141.
